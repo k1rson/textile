@@ -1,14 +1,18 @@
-import './assets/main.css'
+// style lazy imports
+import './assets/scss/style.scss'
 
+// plugins
+import { registerPlugins } from './plugins'
+
+// components
+import App from '../src/App.vue'
+
+// composables
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 
-import App from './App.vue'
-import router from './router'
-
+// create and init main app
 const app = createApp(App)
 
-app.use(createPinia())
-app.use(router)
+registerPlugins(app)
 
 app.mount('#app')

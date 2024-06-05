@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-1w_yc&hv=8-ygn7ywspzxx46uz##^v((%rgx^+dzt(kj#bdufh
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+AUTH_USER_MODEL = 'auth_app.UserModel'
 
 INSTALLED_APPS = [
 
@@ -20,14 +20,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # lib apps
+    'corsheaders',
+    'rest_framework_simplejwt',
     
     # my apps
+    'apps.auth_app.apps.AuthAppConfig',
 ]
 MIDDLEWARE = [
     
     # django default middlewares
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -81,6 +85,16 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # REST CONFIGURATION
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
+}
 
 LANGUAGE_CODE = 'en-us'
 

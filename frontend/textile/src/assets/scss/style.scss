@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap'); // base font
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap'); // card font
+@layer base {
+  html {
+    font-family: 'Tenor Sans', 'Italic', sans-serif !important;
+    background-color: rgb(253, 235, 223);
+  }
+}
